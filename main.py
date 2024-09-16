@@ -28,7 +28,7 @@ for i in range(16):
 plt.tight_layout()  # Prevent overlap of subplots
 plt.show()
 
-# plt.savefig('output_image.png')
+plt.savefig('output_image1.png')
 
 # TRAINING THE MODEL
 
@@ -38,6 +38,8 @@ training_labels = training_labels[:20000]
 testing_images = testing_images[:4000]
 testing_labels = testing_labels[:4000]
 
+# -----------------------------------------------------UNCOMMENT THIS CODE TO RETRAIN THE DATA------------------------------------------------------------------
+'''
 model = models.Sequential()
 model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)))
 model.add(layers.MaxPooling2D((2, 2)))
@@ -61,3 +63,4 @@ print(f"Accuracy: {accuracy}")
 
 # Save the model
 model.save('image_classifier.keras')
+'''
