@@ -3,6 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 from tensorflow.keras import datasets, layers, models
+from tensorflow.keras.preprocessing.image import img_to_array
+from tensorflow.image import resize
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Flatten, Dense
+
 
 matplotlib.use('Agg')
 
@@ -64,3 +69,18 @@ print(f"Accuracy: {accuracy}")
 # Save the model
 model.save('image_classifier.keras')
 '''
+
+model = models.load_model('image_classifier.keras')
+
+img = cv.imread('bird.jpg')
+img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+
+# Resizing the image to fit the model's expected input
+img = resize(img, (32, 32))  # Resize to (32, 32, 3), adjust based on our model
+img = img_to_array(img)
+
+plt.imshow(img, cmap='binary')
+
+prediction = model.predict(np.array([img]) / 255)
+index = np.argmax(prediction)
+print(f"Prediction is: {class_names[index]}")
