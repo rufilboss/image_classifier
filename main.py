@@ -33,7 +33,7 @@ for i in range(16):
 plt.tight_layout()  # Prevent overlap of subplots
 plt.show()
 
-plt.savefig('output_image1.png')
+# plt.savefig('output_image.png')
 
 # TRAINING THE MODEL
 
@@ -72,7 +72,7 @@ model.save('image_classifier.keras')
 
 model = models.load_model('image_classifier.keras')
 
-img = cv.imread('bird.jpg')
+img = cv.imread('test.jpg')
 img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
 
 # Resizing the image to fit the model's expected input
